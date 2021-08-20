@@ -6,14 +6,14 @@ Espone delle Rest API per consultazione e per la verifica dei numeri di telefono
 
 
 Per avviare il programma 
-```bash
+```shell
 cd challenge-main/challege  
 mvn spring-boot:run  
 ```
   
 oppure per generare il file jar
 
-```bash
+```shell
 cd challenge-main/challege  
 mvn install  
 java -jar target/mobile-0.0.1-SNAPSHOT.jar  
