@@ -21,35 +21,43 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Andrea
  */
+
 @RestController
 @RequestMapping("/v1/api")
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
     @Autowired
     CheckNumber checkNumber;
-    
-    
+
     @GetMapping("/user/{idName}")
-    public ResponseEntity<User> user (@PathVariable("idName") String idName) {
-        User user = userService.getUserByIdName(idName);
-    return new ResponseEntity<>(user, HttpStatus.OK);
-   
+    public ResponseEntity<User> user(@PathVariable("idName") String idName) {
+        User user;
+        try {
+            user = userService.getUserByIdName(idName);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
+
     }
-    
+
     @GetMapping("/users/{stato}")
     public ResponseEntity<List<User>> users(@PathVariable("stato") String stato) {
-        List<User> list =userService.findByStatusInUser(stato);
-    return new ResponseEntity<> ( list, HttpStatus.OK );
+        List<User> list;
+        try {
+            list = userService.findByStatusInUser(stato);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
-    
-       @GetMapping("/check/{number}")
-    public ResponseEntity<User> check (@PathVariable("number") String number) {
-    return new ResponseEntity<>(checkNumber.check("",number), HttpStatus.OK);
-   
-    } 
-    
 
-    
+    @GetMapping("/check/{number}")
+    public ResponseEntity<User> check(@PathVariable("number") String number) {
+        return new ResponseEntity<>(checkNumber.check("", number), HttpStatus.OK);
+
+    }
+
 }
