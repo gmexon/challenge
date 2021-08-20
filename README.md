@@ -10,14 +10,14 @@ Per avviare il programma
   mvn spring-boot:run  
 ```
   
-oppure per generare il file jar
+oppure 
 
 ```shell  
   mvn install  
   java -jar target/mobile-0.0.1-SNAPSHOT.jar  
 ``` 
   
-per leggere la documentazione aprire il browser digitando l'indirizzo localhost:8080
+Per leggere la documentazione aprire il browser digitando l'indirizzo localhost:8080
 
 
 
