@@ -6,15 +6,20 @@ Espone delle Rest API per consultazione e per la verifica dei numeri di telefono
 
 
 Per avviare il programma 
+```console
+$ cd challenge-main/challege  
+$ mvn spring-boot:run  
+```
+  
+oppure per generare il file jar
 
-  cd challenge-main/challege  
-  mvn spring-boot:run  
+```console
+$ cd challenge-main/challege  
+$ mvn install  
+$ java -jar target/mobile-0.0.1-SNAPSHOT.jar  
+``` 
   
-oppure  
-  
-  cd challenge-main/challege  
-  mvn install  
-  java -jar target/mobile-0.0.1-SNAPSHOT.jar  
+per leggere la documentazione aprire il browser digitando l'indirizzo localhost:8080
 
 
 
