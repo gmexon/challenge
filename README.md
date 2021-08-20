@@ -4,8 +4,6 @@ All'avvio legge un file csv formato da un id utente e un numero di telefono cerc
 
 Espone delle Rest API per consultazione e per la verifica dei numeri di telefono. 
 
-La Documentazione è nella url principale 
-  localhost:8080
 
 Per avviare il programma 
 
