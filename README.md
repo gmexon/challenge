@@ -8,7 +8,15 @@ La Documentazione è nella url principale
   localhost:8080
 
 Per avviare il programma 
+
+  cd challenge-main/challege
   mvn spring-boot:run
+  
+oppure
+  
+  cd challenge-main/challege
+  mvn install
+  java -jar target/mobile-0.0.1-SNAPSHOT.jar
 
 
 
