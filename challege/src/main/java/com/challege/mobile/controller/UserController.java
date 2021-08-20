@@ -32,7 +32,7 @@ public class UserController {
     CheckNumber checkNumber;
 
     @GetMapping("/user/{id_name}")
-    public ResponseEntity<User> user(@PathVariable("id_name") String idName) {
+    public ResponseEntity<User> user(@Parameter(description = "example: 103300640") @PathVariable("id_name") String idName) {
         User user;
         try {
             user = userService.getUserByIdName(idName);
@@ -66,9 +66,8 @@ public class UserController {
     }
 
     @GetMapping("/check/{number}")
-    public ResponseEntity<User> check(@PathVariable("number") String number) {
+    public ResponseEntity<User> check(@Parameter(description = "example: 27730276061") @PathVariable("number") String number) {
         return new ResponseEntity<>(checkNumber.check("", number), HttpStatus.OK);
     }
 
 }
-
