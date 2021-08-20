@@ -8,6 +8,7 @@ package com.challege.mobile.controller;
 import com.challege.mobile.CheckNumber;
 import com.challege.mobile.model.User;
 import com.challege.mobile.service.UserService;
+import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,7 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{status}")
-    public ResponseEntity<List<User>> users(@PathVariable("status") String stato) {
+    public ResponseEntity<List<User>> users(@Parameter(description = "OK FIXED WRONG") @PathVariable("status") String stato) {
         List<User> list;
         try {
             list = userService.findByStatusInUser(stato);
@@ -70,3 +71,4 @@ public class UserController {
     }
 
 }
+
