@@ -13,7 +13,7 @@ Per avviare il programma
 oppure 
 
 ```shell  
-  mvn install  
+  mvn package  
   java -jar target/mobile-0.0.1-SNAPSHOT.jar  
 ``` 
   
