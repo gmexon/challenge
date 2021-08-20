@@ -23,13 +23,13 @@ public class CheckNumber {
     public User check(String idName, String number) {
 
         if (phoneNumberMatch(number, "^27\\d{9}$")) {
-            return new User(idName, number, status.OK + "", "dont touch");
+            return new User(idName, number, status.OK + "", "not modified");
         }
         if (phoneNumberMatch(number, "\\d{9}$")) {
-            return new User(idName, "27" + number, status.FIXED + "" + "", "add prefix 27");
+            return new User(idName, "27" + number, status.FIXED + "" + "", "added prefix 27");
         }
 
-        return new User(idName, number, status.WRONG + "", "bad number");
+        return new User(idName, number, status.WRONG + "", "wrong number");
 
     }
 
