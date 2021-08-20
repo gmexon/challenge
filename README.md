@@ -9,14 +9,14 @@ La Documentazione è nella url principale
 
 Per avviare il programma 
 
-  cd challenge-main/challege
-  mvn spring-boot:run
+  cd challenge-main/challege  
+  mvn spring-boot:run  
   
-oppure
+oppure  
   
-  cd challenge-main/challege
-  mvn install
-  java -jar target/mobile-0.0.1-SNAPSHOT.jar
+  cd challenge-main/challege  
+  mvn install  
+  java -jar target/mobile-0.0.1-SNAPSHOT.jar  
 
 
 
