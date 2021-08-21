@@ -22,5 +22,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List <User> findByStatusInUser(String status);
     
     Optional <User> findByIdNameIs(String IdName);
+    
+        @Query("SELECT new com.challege.mobile.dto.StatusStatisticsDTO(u.status, COUNT(u)) " +
+           "FROM " +
+           "    User u " +
+           "GROUP BY " +
+           "    u.status")
+    List<StatusStatisticsDTO> findStatusCount();
   
 }
