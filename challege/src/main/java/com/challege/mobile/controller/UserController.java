@@ -69,5 +69,16 @@ public class UserController {
     public ResponseEntity<User> check(@Parameter(description = "example: 27730276061") @PathVariable("number") String number) {
         return new ResponseEntity<>(checkNumber.check("", number.trim()), HttpStatus.OK);
     }
+    
+     @GetMapping("/statistics")
+     public ResponseEntity<List<StatusStatisticsDTO>> statistics() {
+      List<StatusStatisticsDTO> list;
+       try {
+            list = userService.getStatusCount();
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);      
+     }
 
 }
