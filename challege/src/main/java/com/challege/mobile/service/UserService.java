@@ -19,7 +19,7 @@ public interface UserService {
     List < User > getAllUsers();
     User getUserByIdName(String idName);
     List < User > findByStatusInUser(String status);
-    
+    List < StatusStatisticsDTO > getStatusCount();
     
 
      
