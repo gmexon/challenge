@@ -5,6 +5,9 @@
  */
 package com.challege.mobile.model;
 
+
+import com.challege.mobile.Status;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +33,7 @@ public class User implements Serializable {
     private String phoneNumber;
 
     @Column(name = "status")
+    @Schema(implementation = Status.class)
     private String status;
     
     @Column(name = "message")
