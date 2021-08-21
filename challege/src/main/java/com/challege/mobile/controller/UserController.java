@@ -35,7 +35,7 @@ public class UserController {
     public ResponseEntity<User> user(@Parameter(description = "example: 103300640") @PathVariable("id_name") String idName) {
         User user;
         try {
-            user = userService.getUserByIdName(idName);
+            user = userService.getUserByIdName(idName.trim());
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
@@ -58,7 +58,7 @@ public class UserController {
     public ResponseEntity<List<User>> users(@Parameter(description = "OK FIXED WRONG") @PathVariable("status") String stato) {
         List<User> list;
         try {
-            list = userService.findByStatusInUser(stato);
+            list = userService.findByStatusInUser(stato.trim().toUpperCase());
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -67,7 +67,7 @@ public class UserController {
 
     @GetMapping("/check/{number}")
     public ResponseEntity<User> check(@Parameter(description = "example: 27730276061") @PathVariable("number") String number) {
-        return new ResponseEntity<>(checkNumber.check("", number), HttpStatus.OK);
+        return new ResponseEntity<>(checkNumber.check("", number.trim()), HttpStatus.OK);
     }
 
 }
