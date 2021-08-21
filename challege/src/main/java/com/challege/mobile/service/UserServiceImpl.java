@@ -67,6 +67,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findByStatusInUser(String status) {
       return userRepository.findByStatusInUser(status);
     }
+    
+    @Override
+    public List<StatusStatisticsDTO> getStatusCount() {
+       return userRepository.findStatusCount();
+    }
 
 
     
