@@ -6,6 +6,7 @@
 package com.challege.mobile.service;
 
 import com.challege.mobile.model.User;
+import com.challege.mobile.dto.StatusStatisticsDTO;
 import java.util.List;
 
 /**
@@ -20,9 +21,5 @@ public interface UserService {
     User getUserByIdName(String idName);
     List < User > findByStatusInUser(String status);
     List < StatusStatisticsDTO > getStatusCount();
-    
-
-     
-     
-    
+  
 }
