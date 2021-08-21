@@ -5,6 +5,7 @@
  */
 package com.challege.mobile.repository;
 
+import com.challege.mobile.dto.StatusStatisticsDTO;
 import com.challege.mobile.model.User;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
     Optional <User> findByIdNameIs(String IdName);
     
-        @Query("SELECT new com.challege.mobile.dto.StatusStatisticsDTO(u.status, COUNT(u)) " +
+    @Query("SELECT new com.challege.mobile.dto.StatusStatisticsDTO(u.status, COUNT(u)) " +
            "FROM " +
            "    User u " +
            "GROUP BY " +
