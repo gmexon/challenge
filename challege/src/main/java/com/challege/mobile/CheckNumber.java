@@ -16,20 +16,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class CheckNumber {
 
-    enum status {
-        OK, FIXED, WRONG
-    }
 
     public User check(String idName, String number) {
 
         if (phoneNumberMatch(number, "^27\\d{9}$")) {
-            return new User(idName, number, status.OK + "", "not modified");
+            return new User(idName, number, Status.OK + "", "dont touch");
         }
         if (phoneNumberMatch(number, "\\d{9}$")) {
-            return new User(idName, "27" + number, status.FIXED + "" + "", "added prefix 27");
+            return new User(idName, "27" + number, Status.FIXED + "" + "", "add prefix 27");
         }
-
-        return new User(idName, number, status.WRONG + "", "wrong number");
+        return new User(idName, number, Status.WRONG + "", "bad number");
 
     }
 
@@ -37,5 +33,5 @@ public class CheckNumber {
         return Pattern.compile(pattern).matcher(number).matches();
     }
 
-
 }
+
