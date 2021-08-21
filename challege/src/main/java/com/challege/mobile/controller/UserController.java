@@ -6,6 +6,7 @@
 package com.challege.mobile.controller;
 
 import com.challege.mobile.CheckNumber;
+import com.challege.mobile.dto.StatusStatisticsDTO;
 import com.challege.mobile.model.User;
 import com.challege.mobile.service.UserService;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -69,8 +70,9 @@ public class UserController {
     public ResponseEntity<User> check(@Parameter(description = "example: 27730276061") @PathVariable("number") String number) {
         return new ResponseEntity<>(checkNumber.check("", number.trim()), HttpStatus.OK);
     }
+
     
-     @GetMapping("/statistics")
+    @GetMapping("/statistics")
      public ResponseEntity<List<StatusStatisticsDTO>> statistics() {
       List<StatusStatisticsDTO> list;
        try {
@@ -80,5 +82,4 @@ public class UserController {
         }
         return new ResponseEntity<>(list, HttpStatus.OK);      
      }
-
 }
