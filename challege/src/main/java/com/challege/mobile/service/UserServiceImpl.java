@@ -5,6 +5,7 @@
  */
 package com.challege.mobile.service;
 
+import com.challege.mobile.dto.StatusStatisticsDTO;
 import com.challege.mobile.model.User;
 import com.challege.mobile.repository.UserRepository;
 import java.util.List;
@@ -67,12 +68,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findByStatusInUser(String status) {
       return userRepository.findByStatusInUser(status);
     }
-    
+
     @Override
     public List<StatusStatisticsDTO> getStatusCount() {
        return userRepository.findStatusCount();
     }
-
-
+    
     
 }
