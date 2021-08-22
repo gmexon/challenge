@@ -5,6 +5,7 @@ import com.challege.mobile.dto.StatusStatisticsDTO;
 import com.challege.mobile.model.User;
 import com.challege.mobile.service.UserService;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,7 +59,7 @@ public class UserController {
 
     
     @GetMapping("/users/{status}")
-    public ResponseEntity<List<User>> users(@Parameter(description = "OK FIXED WRONG") @PathVariable("status") String stato) {
+    public ResponseEntity<List<User>> users(@Parameter(name ="status", schema = @Schema(type = "string", allowableValues = {"OK", "FIXED","WRONG"})) @PathVariable("status") String stato) {
         List<User> list;
         try {
             list = userService.findByStatusInUser(stato.trim().toUpperCase());
@@ -108,4 +109,5 @@ public class UserController {
     
     
 }
+
 
