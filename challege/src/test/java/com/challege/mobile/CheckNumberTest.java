@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.challege.mobile;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Andrea
  */
+
 public class CheckNumberTest {
     
     CheckNumber tester;
@@ -29,6 +25,15 @@ public class CheckNumberTest {
                 assertEquals(true,tester.phoneNumberMatch("27831234567","^27\\d{9}$"));
                 
                 assertEquals(true,tester.phoneNumberMatch("123567809","\\d{9}$"));
+                
+                assertEquals(false,tester.phoneNumberMatch("1488176172_DELETED_","^\\d*$"));
+                
+                assertEquals(true,tester.phoneNumberMatch("123567809","^\\d*$"));
+                
+                assertEquals(true,tester.phoneNumberMatch("1235678","^\\d{1,8}$"));
+                
+                assertEquals(false,tester.phoneNumberMatch("","^\\d{1,8}$"));
+           
                 
     }
     
