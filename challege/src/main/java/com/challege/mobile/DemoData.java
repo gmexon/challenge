@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.challege.mobile;
 
 import com.challege.mobile.service.UserService;
@@ -40,7 +35,7 @@ public class DemoData implements ApplicationRunner {
 
             while ((nextLine = reader.readNext()) != null) {
                 try {
-                    userService.saveUser(checkNumber.check(nextLine[0], nextLine[1]));
+                    userService.saveUser(checkNumber.check(nextLine[0].trim(), nextLine[1].trim()));
                 } catch (Exception e) {
                      System.err.println(e);
                 }
