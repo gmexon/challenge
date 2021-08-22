@@ -2,8 +2,8 @@ package com.challege.mobile.service;
 
 import com.challege.mobile.model.User;
 import com.challege.mobile.dto.StatusStatisticsDTO;
+import java.io.InputStream;
 import java.util.List;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -18,7 +18,7 @@ public interface UserService {
     User getUserByIdName(String idName);
     List < User > findByStatusInUser(String status);
     List < StatusStatisticsDTO > getStatusCount();
-    public void loadFile(MultipartFile file);
+    public void loadFile(InputStream file);
 
     
 }
