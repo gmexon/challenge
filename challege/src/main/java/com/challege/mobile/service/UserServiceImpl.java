@@ -40,12 +40,6 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    @Modifying
-    public void saveUser(User user) {
-    this.userRepository.save(user); 
-    }
-
-    @Override
     public User getUserById(long id) {
         Optional <User> optional = userRepository.findById(id);
         User user = null;
@@ -92,7 +86,7 @@ public class UserServiceImpl implements UserService {
 
             while ((nextLine = reader.readNext()) != null) {
                 try {
-                    saveUser(checkNumber.check(nextLine[0], nextLine[1]));
+                    userRepository.save(checkNumber.check(nextLine[0], nextLine[1]));
                 } catch (Exception ex) {
                       Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                 }
