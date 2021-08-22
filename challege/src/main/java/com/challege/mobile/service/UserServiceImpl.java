@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.challege.mobile.service;
 
 import com.challege.mobile.CheckNumber;
@@ -12,6 +7,7 @@ import com.challege.mobile.repository.UserRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -22,7 +18,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -88,10 +83,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Modifying
-    public void loadFile(MultipartFile file) {
+    public void loadFile(InputStream is) {
+        CSVReader reader = null;
+        
         try {
-            CSVReader reader = new CSVReader(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8));
-       
+            reader = new CSVReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             String[] nextLine;
 
             while ((nextLine = reader.readNext()) != null) {
@@ -101,10 +97,23 @@ public class UserServiceImpl implements UserService {
                       Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        
+
         } catch (CsvValidationException | IOException ex) {
             Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         
+        } finally {
+            if (is != null) 
+                try {
+                is.close();
+            } catch (IOException e) {
+                System.err.println("Failed to close Streams");
+            }
+            if (reader != null) 
+                try {
+                reader.close();
+            } catch (IOException ioe) {
+                System.err.println("Failed to close CSVReader");
+            }
         }
     }
 
