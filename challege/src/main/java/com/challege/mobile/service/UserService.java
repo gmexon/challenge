@@ -11,14 +11,13 @@ import java.util.List;
  */
 
 public interface UserService {
-    void saveUser(User user);
     User getUserById(long id);
     void deleteAllUsers();
     List < User > getAllUsers();
     User getUserByIdName(String idName);
     List < User > findByStatusInUser(String status);
     List < StatusStatisticsDTO > getStatusCount();
-    public void loadFile(InputStream file);
+    void loadFile(InputStream file);
 
     
 }
