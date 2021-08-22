@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.challege.mobile.repository;
 
 import com.challege.mobile.dto.StatusStatisticsDTO;
@@ -17,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author Andrea
  */
+
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT t FROM User t WHERE t.status = ?1")
