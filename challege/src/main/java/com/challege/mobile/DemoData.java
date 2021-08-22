@@ -21,8 +21,6 @@ public class DemoData implements ApplicationRunner {
 
     @Autowired
     UserService userService;
-    @Autowired
-    CheckNumber checkNumber;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
