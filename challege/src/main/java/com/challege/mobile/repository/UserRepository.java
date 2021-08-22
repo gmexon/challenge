@@ -26,5 +26,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
            "GROUP BY " +
            "    u.status")
     List<StatusStatisticsDTO> findStatusCount();
+    
+
+    @Query("DELETE from User u")
+    void deleteAllUser();
+            
   
 }
+
