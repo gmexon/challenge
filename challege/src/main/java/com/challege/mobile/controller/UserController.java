@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.challege.mobile.controller;
 
 import com.challege.mobile.CheckNumber;
@@ -23,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Andrea
  */
+
 @RestController
 @RequestMapping("/v1/api")
 public class UserController {
@@ -32,8 +28,8 @@ public class UserController {
     @Autowired
     CheckNumber checkNumber;
 
-    @GetMapping("/user/{id_name}")
-    public ResponseEntity<User> user(@Parameter(description = "example: 103300640") @PathVariable("id_name") String idName) {
+    @GetMapping("/user/{idName}")
+    public ResponseEntity<User> user(@Parameter(description = "example: 103300640") @PathVariable("idName") String idName) {
         User user;
         try {
             user = userService.getUserByIdName(idName.trim());
@@ -55,6 +51,7 @@ public class UserController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    
     @GetMapping("/users/{status}")
     public ResponseEntity<List<User>> users(@Parameter(description = "OK FIXED WRONG") @PathVariable("status") String stato) {
         List<User> list;
@@ -68,7 +65,7 @@ public class UserController {
 
     @GetMapping("/check/{number}")
     public ResponseEntity<User> check(@Parameter(description = "example: 27730276061") @PathVariable("number") String number) {
-        return new ResponseEntity<>(checkNumber.check("", number.trim()), HttpStatus.OK);
+        return new ResponseEntity<>(checkNumber.check("check", number.trim()), HttpStatus.OK);
     }
 
     
