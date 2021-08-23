@@ -15,9 +15,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -25,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
     
     @Autowired
@@ -76,7 +73,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Modifying
     public void loadFile(InputStream is) {
         CSVReader reader = null;
         
@@ -112,7 +108,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Modifying
     public void deleteAllUsers() {
         userRepository.deleteAll();
     }
