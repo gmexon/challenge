@@ -37,19 +37,6 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User getUserById(long id) {
-        Optional <User> optional = userRepository.findById(id);
-        User user = null;
-        if (optional.isPresent()) {
-            user = optional.get();
-        } else {
-            throw new RuntimeException(" User not found for id: " + id);
-        }
-        return user;
-    }
-
-
-    @Override
     public User getUserByIdName(String idName) {
         Optional <User> optional = userRepository.findByIdNameIs(idName);
         User user = null;
@@ -57,7 +44,6 @@ public class UserServiceImpl implements UserService {
             user = optional.get();
         } else {
            throw new RuntimeException(" User not found for IdName: " + idName);
-         
         }
         return user;
     }
@@ -73,25 +59,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void loadFile(InputStream is) {
+    public void loadFile(InputStream is)   {
         CSVReader reader = null;
         
         try {
             reader = new CSVReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             String[] nextLine;
 
-            while ((nextLine = reader.readNext()) != null) {
-                try {
-                    userRepository.save(checkNumber.check(nextLine[0], nextLine[1]));
-                } catch (Exception ex) {
-                      Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            while ((nextLine = reader.readNext()) != null) {          
+                    userRepository.save(checkNumber.check(nextLine[0], nextLine[1]));       
             }
-
-        } catch (CsvValidationException | IOException ex) {
+        }
+        catch (IOException | CsvValidationException ex) {
             Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        
-        } finally {
+        }
+         finally {
             if (is != null) 
                 try {
                 is.close();
