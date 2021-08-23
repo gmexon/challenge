@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public interface UserService {
-    User getUserById(long id);
+    
     void deleteAllUsers();
     List < User > getAllUsers();
     User getUserByIdName(String idName);
@@ -19,5 +19,5 @@ public interface UserService {
     List < StatusStatisticsDTO > getStatusCount();
     void loadFile(InputStream file);
 
-    
 }
+
